@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
     },
   })
 
-  res.send('ok')
+  res.json('ok')
 })
 
 // sign-in

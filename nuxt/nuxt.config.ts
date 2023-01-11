@@ -17,13 +17,15 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    API_URL: process.env.API_URL || 'http://localhost:3001',
-  },
-  watchers: {
-    webpack: {
-      aggregateTimeout: 300,
-      poll: 1000,
+    public: {
+      API_URL: process.env.API_URL || 'http://localhost:3001',
     },
   },
-  extractCSS: true,
+  // watchers: {
+  //   webpack: {
+  //     aggregateTimeout: 300,
+  //     poll: 1000,
+  //   },
+  // },
+  // extractCSS: true,
 })
