@@ -8,6 +8,7 @@ services:
     restart: always
     ports:
       - "3000:3000"
+      - "24679:24679"
     volumes:
       - ./nuxt/:/app
       - '/app/node_modules'
