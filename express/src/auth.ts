@@ -1,4 +1,9 @@
 import express from 'express'
+import bcrypt from 'bcrypt'
+import jwt, { Secret, JwtPayload } from 'jsonwebtoken'
+import crypto from 'crypto'
+
+const jwt_secret: Secret = 'coucou'
 
 var router = express.Router()
 
@@ -8,11 +13,65 @@ var router = express.Router()
 //   next()
 // })
 
-// define the home page route
-router.get('/', async (req, res) => {
-  //return users
-  const users = await req.prisma.user.findMany()
-  res.json(users)
+// sign-up
+router.post('/signup', async (req, res) => {
+  const { email, password } = req.body || {}
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' })
+  }
+
+  const user = await req.prisma.user.findUnique({
+    where: {
+      email,
+    },
+  })
+
+  if (user) {
+    return res.status(400).json({ message: 'User already exists' })
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10)
+
+  const newUser = await req.prisma.user.create({
+    data: {
+      email,
+      password: hashedPassword,
+    },
+  })
+
+  res.send('ok')
+})
+
+// sign-in
+router.post('/signin', async (req, res) => {
+  const { email, password } = req.body || {}
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' })
+  }
+
+  const user = await req.prisma.user.findUnique({
+    where: {
+      email,
+    },
+  })
+
+  if (!user) {
+    return res.status(400).json({ message: 'User not found' })
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, user.password)
+
+  if (!isPasswordValid) {
+    return res.status(400).json({ message: 'Invalid password' })
+  }
+
+  const token = jwt.sign(
+    { id: user.id, jwtId: crypto.randomBytes(8).toString('base64') },
+    jwt_secret,
+    { expiresIn: '1m' }
+  )
+
+  res.json({ token })
 })
 
 export default router

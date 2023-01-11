@@ -7,9 +7,17 @@ import auth from './auth'
 
 import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+require('dotenv').config()
+
+const dbUrl =
+  process.env.DATABASE_URL ||
+  'postgresql://casadiny:casadiny@localhost:5432/casadiny?schema=casadiny'
+
+const prisma = new PrismaClient({
+  datasources: { db: { url: dbUrl } },
+})
 const app = express()
-const port = 3000
+const port = 3001
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

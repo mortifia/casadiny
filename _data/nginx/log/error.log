@@ -1,0 +1,467 @@
+2023/01/11 11:26:25 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:26:25 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:26:25 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:26:25 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:26:25 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:26:25 [notice] 1#1: start worker processes
+2023/01/11 11:26:25 [notice] 1#1: start worker process 19
+2023/01/11 11:26:25 [notice] 1#1: start worker process 20
+2023/01/11 11:28:34 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:28:34 [notice] 19#19: gracefully shutting down
+2023/01/11 11:28:34 [notice] 19#19: exiting
+2023/01/11 11:28:34 [notice] 20#20: gracefully shutting down
+2023/01/11 11:28:34 [notice] 20#20: exiting
+2023/01/11 11:28:34 [notice] 19#19: exit
+2023/01/11 11:28:34 [notice] 20#20: exit
+2023/01/11 11:28:34 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:28:34 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 11:28:34 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:28:34 [notice] 1#1: exit
+2023/01/11 11:28:40 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:28:40 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:28:40 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:28:40 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:28:40 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:28:40 [notice] 1#1: start worker processes
+2023/01/11 11:28:40 [notice] 1#1: start worker process 19
+2023/01/11 11:28:40 [notice] 1#1: start worker process 20
+2023/01/11 11:29:36 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.26.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:29:39 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.26.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:29:48 [error] 19#19: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "GET /auth/signin HTTP/1.1", upstream: "http://172.26.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:29:55 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.26.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:29:56 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.26.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:32:53 [error] 20#20: *9 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.26.0.4:3001/", host: "localhost"
+2023/01/11 11:32:53 [error] 20#20: *9 connect() failed (111: Connection refused) while connecting to upstream, client: 172.26.0.1, server: api.casadiny.com,, request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.26.0.4:3001/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/01/11 11:37:01 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:37:01 [notice] 19#19: gracefully shutting down
+2023/01/11 11:37:01 [notice] 19#19: exiting
+2023/01/11 11:37:01 [notice] 20#20: gracefully shutting down
+2023/01/11 11:37:01 [notice] 19#19: exit
+2023/01/11 11:37:01 [notice] 20#20: exiting
+2023/01/11 11:37:01 [notice] 20#20: exit
+2023/01/11 11:37:02 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2023/01/11 11:37:02 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 11:37:02 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:37:02 [notice] 1#1: exit
+2023/01/11 11:37:11 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:37:11 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:37:11 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:37:11 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:37:11 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:37:11 [notice] 1#1: start worker processes
+2023/01/11 11:37:11 [notice] 1#1: start worker process 20
+2023/01/11 11:37:11 [notice] 1#1: start worker process 21
+2023/01/11 11:37:13 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.27.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:37:13 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.27.0.4:3001/favicon.ico", host: "casadiny.com", referrer: "http://casadiny.com/"
+2023/01/11 11:37:20 [error] 21#21: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.27.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:37:21 [error] 21#21: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.27.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:37:37 [error] 20#20: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.27.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:37:37 [error] 20#20: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 172.27.0.1, server: api.casadiny.com,, request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.27.0.4:3001/favicon.ico", host: "casadiny.com", referrer: "http://casadiny.com/"
+2023/01/11 11:39:39 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:39:39 [notice] 21#21: gracefully shutting down
+2023/01/11 11:39:39 [notice] 21#21: exiting
+2023/01/11 11:39:39 [notice] 20#20: gracefully shutting down
+2023/01/11 11:39:39 [notice] 21#21: exit
+2023/01/11 11:39:39 [notice] 20#20: exiting
+2023/01/11 11:39:39 [notice] 20#20: exit
+2023/01/11 11:39:39 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:39:39 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:39:39 [notice] 1#1: signal 29 (SIGIO) received
+2023/01/11 11:39:39 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:39:39 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:39:39 [notice] 1#1: exit
+2023/01/11 11:39:46 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:39:46 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:39:46 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:39:46 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:39:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:39:46 [notice] 1#1: start worker processes
+2023/01/11 11:39:46 [notice] 1#1: start worker process 19
+2023/01/11 11:39:46 [notice] 1#1: start worker process 20
+2023/01/11 11:40:25 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:40:25 [notice] 19#19: gracefully shutting down
+2023/01/11 11:40:25 [notice] 19#19: exiting
+2023/01/11 11:40:25 [notice] 20#20: gracefully shutting down
+2023/01/11 11:40:25 [notice] 19#19: exit
+2023/01/11 11:40:25 [notice] 20#20: exiting
+2023/01/11 11:40:25 [notice] 20#20: exit
+2023/01/11 11:40:25 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:40:25 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:40:25 [notice] 1#1: signal 29 (SIGIO) received
+2023/01/11 11:40:25 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2023/01/11 11:40:25 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 11:40:25 [notice] 1#1: exit
+2023/01/11 11:40:27 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:40:27 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:40:27 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:40:27 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:40:27 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:40:27 [notice] 1#1: start worker processes
+2023/01/11 11:40:27 [notice] 1#1: start worker process 20
+2023/01/11 11:40:27 [notice] 1#1: start worker process 21
+2023/01/11 11:42:05 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:42:05 [notice] 20#20: gracefully shutting down
+2023/01/11 11:42:05 [notice] 20#20: exiting
+2023/01/11 11:42:05 [notice] 21#21: gracefully shutting down
+2023/01/11 11:42:05 [notice] 21#21: exiting
+2023/01/11 11:42:05 [notice] 20#20: exit
+2023/01/11 11:42:05 [notice] 21#21: exit
+2023/01/11 11:42:06 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:42:06 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:42:06 [notice] 1#1: signal 29 (SIGIO) received
+2023/01/11 11:42:06 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:42:06 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:42:06 [notice] 1#1: exit
+2023/01/11 11:42:07 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:42:07 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:42:07 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:42:07 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:42:07 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:42:07 [notice] 1#1: start worker processes
+2023/01/11 11:42:07 [notice] 1#1: start worker process 20
+2023/01/11 11:42:07 [notice] 1#1: start worker process 21
+2023/01/11 11:46:36 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:46:36 [notice] 20#20: gracefully shutting down
+2023/01/11 11:46:36 [notice] 20#20: exiting
+2023/01/11 11:46:36 [notice] 21#21: gracefully shutting down
+2023/01/11 11:46:36 [notice] 21#21: exiting
+2023/01/11 11:46:36 [notice] 21#21: exit
+2023/01/11 11:46:36 [notice] 20#20: exit
+2023/01/11 11:46:36 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:46:36 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:46:36 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:46:36 [notice] 1#1: exit
+2023/01/11 11:46:38 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:46:38 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:46:38 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:46:38 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:46:38 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:46:38 [notice] 1#1: start worker processes
+2023/01/11 11:46:38 [notice] 1#1: start worker process 20
+2023/01/11 11:46:38 [notice] 1#1: start worker process 21
+2023/01/11 11:47:07 [error] 20#20: *6 upstream prematurely closed connection while reading response header from upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.28.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:47:08 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.28.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:47:15 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "POST / HTTP/1.1", upstream: "http://172.28.0.4:3001/", host: "api.casadiny.com"
+2023/01/11 11:47:16 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "POST / HTTP/1.1", upstream: "http://172.28.0.4:3001/", host: "api.casadiny.com"
+2023/01/11 11:47:20 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.28.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:47:50 [error] 20#20: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.28.0.4:3001/", host: "api.casadiny.com"
+2023/01/11 11:50:06 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:50:06 [notice] 21#21: gracefully shutting down
+2023/01/11 11:50:06 [notice] 21#21: exiting
+2023/01/11 11:50:06 [notice] 20#20: gracefully shutting down
+2023/01/11 11:50:06 [notice] 21#21: exit
+2023/01/11 11:50:06 [notice] 20#20: exiting
+2023/01/11 11:50:06 [notice] 20#20: exit
+2023/01/11 11:50:06 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:50:06 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:50:06 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:50:06 [notice] 1#1: exit
+2023/01/11 11:50:15 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:50:15 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:50:15 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:50:15 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:50:15 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:50:15 [notice] 1#1: start worker processes
+2023/01/11 11:50:15 [notice] 1#1: start worker process 20
+2023/01/11 11:50:15 [notice] 1#1: start worker process 21
+2023/01/11 11:50:15 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.29.0.4:3001/", host: "api.casadiny.com"
+2023/01/11 11:50:17 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.29.0.4:3001/", host: "api.casadiny.com"
+2023/01/11 11:50:32 [error] 20#20: *1 upstream prematurely closed connection while reading response header from upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.29.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:52:00 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:52:00 [notice] 21#21: gracefully shutting down
+2023/01/11 11:52:00 [notice] 20#20: gracefully shutting down
+2023/01/11 11:52:00 [notice] 20#20: exiting
+2023/01/11 11:52:00 [notice] 21#21: exiting
+2023/01/11 11:52:00 [notice] 20#20: exit
+2023/01/11 11:52:00 [notice] 21#21: exit
+2023/01/11 11:52:00 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:52:00 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:52:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/01/11 11:52:00 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:52:00 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:52:00 [notice] 1#1: exit
+2023/01/11 11:52:01 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:52:01 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:52:01 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:52:01 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:52:01 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:52:01 [notice] 1#1: start worker processes
+2023/01/11 11:52:01 [notice] 1#1: start worker process 20
+2023/01/11 11:52:01 [notice] 1#1: start worker process 21
+2023/01/11 11:52:13 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:52:13 [notice] 20#20: gracefully shutting down
+2023/01/11 11:52:13 [notice] 21#21: gracefully shutting down
+2023/01/11 11:52:13 [notice] 20#20: exiting
+2023/01/11 11:52:13 [notice] 21#21: exiting
+2023/01/11 11:52:13 [notice] 20#20: exit
+2023/01/11 11:52:13 [notice] 21#21: exit
+2023/01/11 11:52:13 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 11:52:13 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:52:13 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:52:13 [notice] 1#1: exit
+2023/01/11 11:52:14 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:52:14 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:52:14 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:52:14 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:52:14 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:52:14 [notice] 1#1: start worker processes
+2023/01/11 11:52:14 [notice] 1#1: start worker process 20
+2023/01/11 11:52:14 [notice] 1#1: start worker process 21
+2023/01/11 11:52:31 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:52:31 [notice] 21#21: gracefully shutting down
+2023/01/11 11:52:31 [notice] 21#21: exiting
+2023/01/11 11:52:31 [notice] 20#20: gracefully shutting down
+2023/01/11 11:52:31 [notice] 20#20: exiting
+2023/01/11 11:52:31 [notice] 21#21: exit
+2023/01/11 11:52:31 [notice] 20#20: exit
+2023/01/11 11:52:31 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:52:31 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:52:31 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:52:31 [notice] 1#1: exit
+2023/01/11 11:52:33 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:52:33 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:52:33 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:52:33 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:52:33 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:52:33 [notice] 1#1: start worker processes
+2023/01/11 11:52:33 [notice] 1#1: start worker process 19
+2023/01/11 11:52:33 [notice] 1#1: start worker process 20
+2023/01/11 11:52:43 [error] 19#19: *1 upstream prematurely closed connection while reading response header from upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "POST /auth/signin HTTP/1.1", upstream: "http://172.29.0.4:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 11:53:15 [error] 20#20: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "GET / HTTP/1.1", upstream: "http://172.29.0.4:3001/", host: "casadiny.com"
+2023/01/11 11:53:15 [error] 20#20: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 172.29.0.1, server: api.casadiny.com,, request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.29.0.4:3001/favicon.ico", host: "casadiny.com", referrer: "http://casadiny.com/"
+2023/01/11 11:56:26 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:56:26 [notice] 19#19: gracefully shutting down
+2023/01/11 11:56:26 [notice] 19#19: exiting
+2023/01/11 11:56:26 [notice] 20#20: gracefully shutting down
+2023/01/11 11:56:26 [notice] 20#20: exiting
+2023/01/11 11:56:26 [notice] 19#19: exit
+2023/01/11 11:56:26 [notice] 20#20: exit
+2023/01/11 11:56:26 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2023/01/11 11:56:26 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 11:56:26 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:56:26 [notice] 1#1: exit
+2023/01/11 11:56:37 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:56:37 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:56:37 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:56:37 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:56:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:56:37 [notice] 1#1: start worker processes
+2023/01/11 11:56:37 [notice] 1#1: start worker process 20
+2023/01/11 11:56:37 [notice] 1#1: start worker process 21
+2023/01/11 11:59:28 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 11:59:28 [notice] 21#21: gracefully shutting down
+2023/01/11 11:59:28 [notice] 21#21: exiting
+2023/01/11 11:59:28 [notice] 20#20: gracefully shutting down
+2023/01/11 11:59:28 [notice] 21#21: exit
+2023/01/11 11:59:28 [notice] 20#20: exiting
+2023/01/11 11:59:28 [notice] 20#20: exit
+2023/01/11 11:59:28 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 11:59:28 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 11:59:28 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 11:59:28 [notice] 1#1: exit
+2023/01/11 11:59:37 [notice] 1#1: using the "epoll" event method
+2023/01/11 11:59:37 [notice] 1#1: nginx/1.23.3
+2023/01/11 11:59:37 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 11:59:37 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 11:59:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 11:59:37 [notice] 1#1: start worker processes
+2023/01/11 11:59:37 [notice] 1#1: start worker process 19
+2023/01/11 11:59:37 [notice] 1#1: start worker process 20
+2023/01/11 12:04:56 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:04:56 [notice] 19#19: gracefully shutting down
+2023/01/11 12:04:56 [notice] 19#19: exiting
+2023/01/11 12:04:56 [notice] 20#20: gracefully shutting down
+2023/01/11 12:04:56 [notice] 19#19: exit
+2023/01/11 12:04:56 [notice] 20#20: exiting
+2023/01/11 12:04:56 [notice] 20#20: exit
+2023/01/11 12:04:56 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 12:04:56 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 12:04:56 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:04:56 [notice] 1#1: exit
+2023/01/11 12:05:06 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:05:06 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:05:06 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:05:06 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:05:06 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:05:06 [notice] 1#1: start worker processes
+2023/01/11 12:05:06 [notice] 1#1: start worker process 21
+2023/01/11 12:05:06 [notice] 1#1: start worker process 22
+2023/01/11 12:05:41 [error] 21#21: *101 upstream prematurely closed connection while reading response header from upstream, client: 192.168.0.1, server: api.casadiny.com, request: "POST /auth/signin HTTP/1.1", upstream: "http://192.168.0.3:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 12:05:43 [error] 21#21: *101 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.0.1, server: api.casadiny.com, request: "POST /auth/signin HTTP/1.1", upstream: "http://192.168.0.3:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 12:05:47 [error] 21#21: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.0.1, server: api.casadiny.com, request: "GET / HTTP/1.1", upstream: "http://192.168.0.3:3001/", host: "api.casadiny.com"
+2023/01/11 12:06:11 [error] 21#21: *101 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.0.1, server: api.casadiny.com, request: "POST /auth/signin HTTP/1.1", upstream: "http://192.168.0.3:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 12:07:57 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:07:57 [notice] 21#21: gracefully shutting down
+2023/01/11 12:07:57 [notice] 22#22: gracefully shutting down
+2023/01/11 12:07:57 [notice] 21#21: exiting
+2023/01/11 12:07:57 [notice] 22#22: exiting
+2023/01/11 12:07:57 [notice] 21#21: exit
+2023/01/11 12:07:57 [notice] 22#22: exit
+2023/01/11 12:07:57 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 12:07:57 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:07:57 [notice] 1#1: worker process 22 exited with code 0
+2023/01/11 12:07:57 [notice] 1#1: exit
+2023/01/11 12:08:49 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:08:49 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:08:49 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:08:49 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:08:49 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:08:49 [notice] 1#1: start worker processes
+2023/01/11 12:08:49 [notice] 1#1: start worker process 19
+2023/01/11 12:08:49 [notice] 1#1: start worker process 20
+2023/01/11 12:08:59 [error] 19#19: *1 upstream prematurely closed connection while reading response header from upstream, client: 192.168.0.1, server: api.casadiny.com, request: "POST /auth/signin HTTP/1.1", upstream: "http://192.168.0.3:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 12:11:26 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:11:26 [notice] 19#19: gracefully shutting down
+2023/01/11 12:11:26 [notice] 20#20: gracefully shutting down
+2023/01/11 12:11:26 [notice] 19#19: exiting
+2023/01/11 12:11:26 [notice] 20#20: exiting
+2023/01/11 12:11:26 [notice] 20#20: exit
+2023/01/11 12:11:26 [notice] 19#19: exit
+2023/01/11 12:11:26 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 12:11:26 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 12:11:26 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:11:26 [notice] 1#1: exit
+2023/01/11 12:11:28 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:11:28 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:11:28 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:11:28 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:11:28 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:11:28 [notice] 1#1: start worker processes
+2023/01/11 12:11:28 [notice] 1#1: start worker process 20
+2023/01/11 12:11:28 [notice] 1#1: start worker process 21
+2023/01/11 12:12:00 [error] 21#21: *1 upstream prematurely closed connection while reading response header from upstream, client: 192.168.0.1, server: api.casadiny.com, request: "POST /auth/signin HTTP/1.1", upstream: "http://192.168.0.3:3001/auth/signin", host: "api.casadiny.com"
+2023/01/11 12:14:44 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:14:44 [notice] 20#20: gracefully shutting down
+2023/01/11 12:14:44 [notice] 20#20: exiting
+2023/01/11 12:14:44 [notice] 21#21: gracefully shutting down
+2023/01/11 12:14:44 [notice] 21#21: exiting
+2023/01/11 12:14:44 [notice] 20#20: exit
+2023/01/11 12:14:44 [notice] 21#21: exit
+2023/01/11 12:14:44 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 12:14:44 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:14:44 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:14:44 [notice] 1#1: exit
+2023/01/11 12:15:31 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:15:31 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:15:31 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:15:31 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:15:31 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:15:31 [notice] 1#1: start worker processes
+2023/01/11 12:15:31 [notice] 1#1: start worker process 20
+2023/01/11 12:15:31 [notice] 1#1: start worker process 21
+2023/01/11 12:20:17 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:20:17 [notice] 20#20: gracefully shutting down
+2023/01/11 12:20:17 [notice] 20#20: exiting
+2023/01/11 12:20:17 [notice] 21#21: gracefully shutting down
+2023/01/11 12:20:17 [notice] 20#20: exit
+2023/01/11 12:20:17 [notice] 21#21: exiting
+2023/01/11 12:20:17 [notice] 21#21: exit
+2023/01/11 12:20:17 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 12:20:17 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:20:17 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:20:17 [notice] 1#1: exit
+2023/01/11 12:21:54 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:21:54 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:21:54 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:21:54 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:21:54 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:21:54 [notice] 1#1: start worker processes
+2023/01/11 12:21:54 [notice] 1#1: start worker process 19
+2023/01/11 12:21:54 [notice] 1#1: start worker process 20
+2023/01/11 12:23:23 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:23:23 [notice] 19#19: gracefully shutting down
+2023/01/11 12:23:23 [notice] 20#20: gracefully shutting down
+2023/01/11 12:23:23 [notice] 20#20: exiting
+2023/01/11 12:23:23 [notice] 19#19: exiting
+2023/01/11 12:23:23 [notice] 20#20: exit
+2023/01/11 12:23:23 [notice] 19#19: exit
+2023/01/11 12:23:24 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/01/11 12:23:24 [notice] 1#1: worker process 19 exited with code 0
+2023/01/11 12:23:24 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:23:24 [notice] 1#1: exit
+2023/01/11 12:24:28 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:24:28 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:24:28 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:24:28 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:24:28 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:24:28 [notice] 1#1: start worker processes
+2023/01/11 12:24:28 [notice] 1#1: start worker process 21
+2023/01/11 12:24:28 [notice] 1#1: start worker process 22
+2023/01/11 12:38:41 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:38:41 [notice] 21#21: gracefully shutting down
+2023/01/11 12:38:41 [notice] 21#21: exiting
+2023/01/11 12:38:41 [notice] 22#22: gracefully shutting down
+2023/01/11 12:38:41 [notice] 22#22: exiting
+2023/01/11 12:38:41 [notice] 21#21: exit
+2023/01/11 12:38:41 [notice] 22#22: exit
+2023/01/11 12:38:41 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 12:38:41 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:38:41 [notice] 1#1: signal 29 (SIGIO) received
+2023/01/11 12:38:41 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/01/11 12:38:41 [notice] 1#1: worker process 22 exited with code 0
+2023/01/11 12:38:41 [notice] 1#1: exit
+2023/01/11 12:38:42 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:38:42 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:38:42 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:38:42 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:38:42 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:38:42 [notice] 1#1: start worker processes
+2023/01/11 12:38:42 [notice] 1#1: start worker process 20
+2023/01/11 12:38:42 [notice] 1#1: start worker process 21
+2023/01/11 12:38:56 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:38:56 [notice] 20#20: gracefully shutting down
+2023/01/11 12:38:56 [notice] 20#20: exiting
+2023/01/11 12:38:56 [notice] 21#21: gracefully shutting down
+2023/01/11 12:38:56 [notice] 21#21: exiting
+2023/01/11 12:38:56 [notice] 20#20: exit
+2023/01/11 12:38:56 [notice] 21#21: exit
+2023/01/11 12:38:56 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 12:38:56 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:38:56 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:38:56 [notice] 1#1: exit
+2023/01/11 12:39:07 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:39:07 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:39:07 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:39:07 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:39:07 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:39:07 [notice] 1#1: start worker processes
+2023/01/11 12:39:07 [notice] 1#1: start worker process 20
+2023/01/11 12:39:07 [notice] 1#1: start worker process 21
+2023/01/11 12:43:24 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:43:24 [notice] 20#20: gracefully shutting down
+2023/01/11 12:43:24 [notice] 21#21: gracefully shutting down
+2023/01/11 12:43:24 [notice] 21#21: exiting
+2023/01/11 12:43:24 [notice] 20#20: exiting
+2023/01/11 12:43:24 [notice] 21#21: exit
+2023/01/11 12:43:24 [notice] 20#20: exit
+2023/01/11 12:43:24 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 12:43:24 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:43:24 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:43:24 [notice] 1#1: exit
+2023/01/11 12:43:34 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:43:34 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:43:34 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:43:34 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:43:34 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:43:34 [notice] 1#1: start worker processes
+2023/01/11 12:43:34 [notice] 1#1: start worker process 20
+2023/01/11 12:43:34 [notice] 1#1: start worker process 21
+2023/01/11 12:46:11 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/01/11 12:46:11 [notice] 20#20: gracefully shutting down
+2023/01/11 12:46:11 [notice] 21#21: gracefully shutting down
+2023/01/11 12:46:11 [notice] 20#20: exiting
+2023/01/11 12:46:11 [notice] 21#21: exiting
+2023/01/11 12:46:11 [notice] 20#20: exit
+2023/01/11 12:46:11 [notice] 21#21: exit
+2023/01/11 12:46:11 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/01/11 12:46:11 [notice] 1#1: worker process 20 exited with code 0
+2023/01/11 12:46:11 [notice] 1#1: worker process 21 exited with code 0
+2023/01/11 12:46:11 [notice] 1#1: exit
+2023/01/11 12:46:21 [notice] 1#1: using the "epoll" event method
+2023/01/11 12:46:21 [notice] 1#1: nginx/1.23.3
+2023/01/11 12:46:21 [notice] 1#1: built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
+2023/01/11 12:46:21 [notice] 1#1: OS: Linux 5.15.79.1-microsoft-standard-WSL2
+2023/01/11 12:46:21 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/01/11 12:46:21 [notice] 1#1: start worker processes
+2023/01/11 12:46:21 [notice] 1#1: start worker process 20
+2023/01/11 12:46:21 [notice] 1#1: start worker process 21
