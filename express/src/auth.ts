@@ -66,7 +66,7 @@ router.post('/signin', async (req, res) => {
   }
 
   const token = jwt.sign(
-    { id: user.id, jwtId: crypto.randomBytes(8).toString('base64') },
+    { id: user.id, jwtId: crypto.randomBytes(9).toString('base64url') },
     jwt_secret,
     { expiresIn: '1m' }
   )
