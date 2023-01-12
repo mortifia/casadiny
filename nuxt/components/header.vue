@@ -6,7 +6,7 @@
             </label>
             <ul id="menu">
                 <NuxtLink to="/">Acceuil</NuxtLink>
-                <NuxtLink to="/about">A propos</NuxtLink>
+                <!-- <NuxtLink to="/about">A propos</NuxtLink> -->
 
             </ul>
             <NuxtLink to="/">

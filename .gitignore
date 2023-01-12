@@ -1,2 +1,3 @@
 _data/postgresql
 _data/nginx/log
+_data/certbot

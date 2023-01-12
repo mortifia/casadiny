@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { Ref } from 'vue';
 const config = useRuntimeConfig()
 
 const email = ref()
 const password = ref()
 
 const success = ref(false)
-const error = ref(false)
+const error: Ref<boolean | string> = ref(false)
 const timeRedirect = ref(3)
 
 async function submit(e: Event) {
@@ -21,12 +22,21 @@ async function submit(e: Event) {
             password: password.value,
         }),
     }).then(async (res) => ({ res: res, body: await res.json() }))
-    console.log("fuuuuu")
-    console.log(res)
-    console.log("fiiiii")
     if (res.res.status !== 200) {
-        console.log(res.body)
-        error.value = res.body.message
+        console.log(res.body.message)
+        //english to fr
+        error.value = true
+        switch (res.body.message) {
+            case 'Email and password are required':
+                error.value = "l'email et le mot de passe sont requis"
+                break
+            case 'Email already exists':
+                error.value = "l'email existe déjà"
+                break
+            default:
+                error.value = res.body.message
+                break
+        }
         return null
     }
     success.value = true
@@ -44,17 +54,17 @@ async function submit(e: Event) {
 <template>
     <div>
         <Header />
-        <h1>sign-up</h1>
+        <h1>Inscription</h1>
 
-        <form method="post" @submit.prevent="submit" v-if="success == false">
+        <form @submit.prevent="submit" v-if="success == false">
             <input type="text" name="email" v-model="email" placeholder="email" />
             <input type="password" name="password" v-model="password" placeholder="password" />
-            <p v-if="error !== false" style="color: red;">{{ error }}</p>
+            <p v-show="error !== false">{{ error }}</p>
             <input type="submit" value="submit" />
         </form>
         <div v-else>
-            <h1>Success</h1>
-            <p>Redirecting to login page in {{ timeRedirect }}s...</p>
+            <h1>Inscription réussie</h1>
+            <p>Redirection a la page de connection dans {{ timeRedirect }}s...</p>
             <NuxtLink to="/auth/sign-in">Login</NuxtLink>
         </div>
     </div>
