@@ -35,6 +35,8 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3001
+      - DATABASE_URL=postgresql://casadiny:casadiny@postgresql:5432/casadiny?schema=casadiny
+
     # depends_on:
     #   - postgresql
     links:

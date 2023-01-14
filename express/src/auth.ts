@@ -66,12 +66,37 @@ router.post('/signin', async (req, res) => {
   }
 
   const token = jwt.sign(
-    { id: user.id, jwtId: crypto.randomBytes(9).toString('base64url') },
+    { user: user.id, jwtId: crypto.randomBytes(9).toString('base64url') },
     jwt_secret,
     { expiresIn: '1m' }
   )
 
   res.json({ token })
+})
+
+// admin check
+router.get('/admin', async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1]
+  if (!token) {
+    return res.status(401).json(false)
+  }
+
+  try {
+    const decoded = jwt.verify(token, jwt_secret) as JwtPayload
+    const user = await req.prisma.user.findUnique({
+      where: {
+        user: decoded.id,
+      },
+    })
+
+    if (!user || !user.isAdmin) {
+      return res.status(401).json(false)
+    }
+
+    res.json(true)
+  } catch (err) {
+    return res.status(401).json(false)
+  }
 })
 
 export default router

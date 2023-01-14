@@ -11,8 +11,10 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   //bcript hash of password
-  password String @db.VarChar(60)
+  password String  @db.VarChar(60)
+  //admin
+  admin    Boolean @default(false)
 }
