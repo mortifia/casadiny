@@ -7,6 +7,9 @@
             <ul id="menu">
                 <NuxtLink to="/">Acceuil</NuxtLink>
                 <!-- <NuxtLink to="/about">A propos</NuxtLink> -->
+                <br>
+                <NuxtLink to="/auth/sign-in">Connexion</NuxtLink>
+                <NuxtLink to="/auth/sign-up">Inscription</NuxtLink>
 
             </ul>
             <NuxtLink to="/">
@@ -67,6 +70,18 @@
     align-items: center;
     box-sizing: border-box;
     padding: 0 1.5rem;
+    transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    /* for the animation*/
+    position: relative;
+    right: 0;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    #header #auth {
+        position: relative;
+        right: -100%;
+    }
 }
 
 #header #auth a {

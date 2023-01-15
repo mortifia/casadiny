@@ -1,9 +1,9 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
-import jwt, { Secret, JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
 
-const jwt_secret: Secret = 'coucou'
+const jwt_secret = 'coucou'
 
 var router = express.Router()
 
@@ -68,35 +68,60 @@ router.post('/signin', async (req, res) => {
   const token = jwt.sign(
     { user: user.id, jwtId: crypto.randomBytes(9).toString('base64url') },
     jwt_secret,
-    { expiresIn: '1m' }
+    { expiresIn: '30d' }
   )
 
   res.json({ token })
 })
 
+export async function authToken(req, res, next) {
+  try {
+    const authHeader = req.headers.authorization
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.sendStatus(401)
+
+    jwt.verify(token, jwt_secret, async (err, jwt) => {
+      if (err) return res.sendStatus(403)
+      req.jwt = jwt
+      req.user = await req.prisma.user.findUnique({
+        where: {
+          id: jwt.user,
+        },
+        //not get password
+        // select: {
+        //   id: true,
+        //   email: true,
+        //   admin: true,
+        // },
+      })
+      next()
+    })
+  } catch (err) {
+    console.log(err)
+    next(err)
+  }
+}
+
 // admin check
 router.get('/admin', async (req, res) => {
-  const token = req.headers.authorization?.split(' ')[1]
-  if (!token) {
-    return res.status(401).json(false)
-  }
-
-  try {
-    const decoded = jwt.verify(token, jwt_secret) as JwtPayload
-    const user = await req.prisma.user.findUnique({
-      where: {
-        user: decoded.id,
-      },
-    })
-
-    if (!user || !user.isAdmin) {
-      return res.status(401).json(false)
-    }
-
-    res.json(true)
-  } catch (err) {
-    return res.status(401).json(false)
-  }
+  // const token = req.headers.authorization?.split(' ')[1]
+  // if (!token) {
+  //   return res.status(401).json(false)
+  // }
+  // try {
+  //   const decoded = jwt.verify(token, jwt_secret) as JwtPayload
+  //   const user = await req.prisma.user.findUnique({
+  //     where: {
+  //       user: decoded.id,
+  //     },
+  //   })
+  //   if (!user || !user.isAdmin) {
+  //     return res.status(401).json(false)
+  //   }
+  //   res.json(true)
+  // } catch (err) {
+  //   return res.status(401).json(false)
+  // }
 })
 
 export default router

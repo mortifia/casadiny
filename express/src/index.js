@@ -3,11 +3,14 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
-import auth from './auth'
+import authRouter from './auth.js'
+import userRouter from './user.js'
 
 import { PrismaClient } from '@prisma/client'
 
-require('dotenv').config()
+//dotenv as import
+import dotenv from 'dotenv'
+dotenv.config()
 
 const dbUrl =
   process.env.DATABASE_URL ||
@@ -29,7 +32,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/auth', auth)
+app.use('/auth', authRouter)
+app.use('/user', userRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
