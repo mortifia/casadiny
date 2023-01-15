@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { Ref } from 'vue';
+import { useJwtStore } from '@/stores/jwt'
+const jwtStore = useJwtStore()
+
+</script>
 <template>
     <div id="header">
         <nav id="navmenu">
@@ -8,8 +14,9 @@
                 <NuxtLink to="/">Acceuil</NuxtLink>
                 <!-- <NuxtLink to="/about">A propos</NuxtLink> -->
                 <br>
-                <NuxtLink to="/auth/sign-in">Connexion</NuxtLink>
-                <NuxtLink to="/auth/sign-up">Inscription</NuxtLink>
+                <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-in">Connexion</NuxtLink>
+                <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-up">Inscription</NuxtLink>
+                <NuxtLink v-if="jwtStore.jwt !== null" to="/auth/sign-out">Déconnexion</NuxtLink>
 
             </ul>
             <NuxtLink to="/">
@@ -27,8 +34,10 @@
             </label>
         </nav>
         <div id="auth">
-            <NuxtLink to="/auth/sign-in">Connexion</NuxtLink>
-            <NuxtLink to="/auth/sign-up">Inscription</NuxtLink>
+            <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-in">Connexion</NuxtLink>
+            <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-up">Inscription</NuxtLink>
+            <NuxtLink v-if="jwtStore.jwt !== null" to="/auth/sign-out">Déconnexion</NuxtLink>
+
         </div>
     </div>
 </template>
