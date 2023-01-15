@@ -14,10 +14,9 @@ timeRedirect.value = 3
 // }
 
 // await 3s update each second
-let promise = new Promise(async (resolve, reject) => {
+new Promise(async (resolve, reject) => {
     while (timeRedirect.value > 1) {
         timeRedirect.value--
-        console.log("rraaaaaa")
         await new Promise((resolve) => setTimeout(resolve, 1000))
     }
     navigateTo('/')

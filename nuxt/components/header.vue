@@ -1,7 +1,28 @@
 <script setup lang="ts">
 import { Ref } from 'vue';
 import { useJwtStore } from '@/stores/jwt'
+
+const config = useRuntimeConfig()
 const jwtStore = useJwtStore()
+
+const admin: Ref<null | Boolean> = ref(null)
+//check if admin
+if (jwtStore.jwt !== null) {
+    fetch(`${config.API_URL}/auth/admin`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${jwtStore.jwt}`
+        }
+    }).then(async (res) => {
+        if (res.status === 200) {
+            admin.value = true
+        }
+        else {
+            admin.value = false
+        }
+    })
+}
 
 </script>
 <template>
@@ -16,6 +37,8 @@ const jwtStore = useJwtStore()
                 <br>
                 <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-in">Connexion</NuxtLink>
                 <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-up">Inscription</NuxtLink>
+
+                <NuxtLink v-if="jwtStore.jwt !== null && admin === true" to="/admin">admin</NuxtLink>
                 <NuxtLink v-if="jwtStore.jwt !== null" to="/auth/sign-out">Déconnexion</NuxtLink>
 
             </ul>
@@ -36,6 +59,8 @@ const jwtStore = useJwtStore()
         <div id="auth">
             <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-in">Connexion</NuxtLink>
             <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-up">Inscription</NuxtLink>
+
+            <NuxtLink v-if="jwtStore.jwt !== null && admin === true" to="/admin">admin</NuxtLink>
             <NuxtLink v-if="jwtStore.jwt !== null" to="/auth/sign-out">Déconnexion</NuxtLink>
 
         </div>

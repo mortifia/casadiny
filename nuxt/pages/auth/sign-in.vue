@@ -48,7 +48,7 @@ async function submit(e: Event) {
     success.value = true
     // store token in jwtStore
     const jwtStore = useJwtStore()
-    jwtStore.jwt = res.body
+    jwtStore.jwt = res.body.token
     //nuxt3 redirect to login vue in 3s
     timeRedirect.value = 3
     while (timeRedirect.value > 1) {
