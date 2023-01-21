@@ -159,7 +159,7 @@ h1 {
     width: 100%;
     height: 40px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 2;
     user-select: none;
 }
 
