@@ -253,7 +253,7 @@ h1 {
     }
 
     .summary {
-        width: calc(100% - 8%);
+        width: min(calc(100vw - 6%), 384px);
         margin: auto;
     }
 }
