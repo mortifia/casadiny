@@ -13,9 +13,21 @@ export default defineNuxtConfig({
   googleFonts: {
     download: true,
     families: {
-      Roboto: true,
+      'Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200':
+        true,
+      Inter: true,
     },
   },
+  // hmr wss
+  // vite: {
+  //   server: {
+  //     hmr: {
+  //       path: '/_hmr',
+  //       // protocol: 'wss',
+  //       port: 24679,
+  //     },
+  //   },
+  // },
   runtimeConfig: {
     public: {
       API_URL: process.env.API_URL || 'http://localhost:3001',

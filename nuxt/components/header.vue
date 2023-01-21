@@ -64,6 +64,7 @@ if (jwtStore.jwt !== null) {
             <NuxtLink v-if="jwtStore.jwt !== null" to="/auth/sign-out">Déconnexion</NuxtLink>
 
         </div>
+        <NuxtLink id="cart" to="/cart" class="material-symbols-outlined">&#xe8cc;</NuxtLink>
     </div>
 </template>
 
@@ -77,9 +78,9 @@ if (jwtStore.jwt !== null) {
     z-index: 100;
 
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto 1fr auto auto;
     grid-template-rows: 1fr;
-    grid-template-areas: 'title menu . login';
+    grid-template-areas: 'title menu . login cart';
     /* gap: 0 4.5rem; */
 
     justify-content: space-between;
@@ -111,10 +112,23 @@ if (jwtStore.jwt !== null) {
     overflow: hidden;
 }
 
+#header #cart {
+    grid-area: cart;
+    display: inline;
+    color: #ffffff;
+    font-size: 36px;
+    padding: 0 1rem 0 0.5rem;
+    transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#header #cart:hover {
+    transform: scale(1.2);
+}
+
 @media screen and (max-width: 768px) {
     #header #auth {
         position: relative;
-        right: -100%;
+        right: -1000%;
     }
 }
 

@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import authRouter from './auth.js'
 import userRouter from './user.js'
+import productRouter from './product.js'
 
 import { PrismaClient } from '@prisma/client'
 
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
+app.use('/product', productRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
