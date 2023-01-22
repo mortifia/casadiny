@@ -1,3 +1,6 @@
 <template>
-    <p>bou toi</p>
+    <div>
+        <Header />
+        <CartAddress />
+    </div>
 </template>

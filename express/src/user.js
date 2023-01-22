@@ -39,6 +39,22 @@ router.post('/address', authToken, async (req, res) => {
   }
 })
 
+//delete address
+router.delete('/address/:id', authToken, async (req, res) => {
+  console.log(req.params.id)
+  try {
+    const address = await req.prisma.address.delete({
+      where: {
+        id: Number(req.params.id),
+      },
+    })
+
+    res.json(address)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+})
+
 //address
 router.get('/address', authToken, async (req, res) => {
   try {

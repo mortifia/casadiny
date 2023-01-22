@@ -3,6 +3,8 @@ import { defineStore, storeToRefs } from 'pinia'
 export const useCartStore = defineStore('cart', {
   state: () => ({
     products: {},
+    address: {},
+    addressBill: {},
   }),
   actions: {
     addProduct(product) {
