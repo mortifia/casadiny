@@ -74,7 +74,6 @@ function updateAddress() {
 }
 
 async function addAddress(e) {
-    console.log("COUCOU TOI")
     const res = await fetch(`${config.API_URL}/user/address`, {
         method: 'POST',
         headers: {
@@ -124,7 +123,7 @@ updateAddress()
             <div class="color"></div>
             <p>Sous-total ht : {{ cartTotalHT / 100 }} €</p>
             <p>Sous-total ttc : {{ cartTotalTTC / 100}} €</p>
-            <NuxtLink to="/cart/resume" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
+            <NuxtLink to="/cart/summary" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
                 Commander</NuxtLink>
             <span class="button checkout error" v-if="JwtStore.jwt !== null && !allAddressChecked">il manque une
                 adresse</span>
@@ -194,7 +193,7 @@ updateAddress()
                     <p>{{ address.firstName }} {{ address.lastName }} {{ address.phone.replace(/(.{2})/g, "$1 ") }}</p>
                 </label>
             </div>
-            <NuxtLink to="/cart/resume" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
+            <NuxtLink to="/cart/summary" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
                 Commander</NuxtLink>
             <span class="button checkout error" v-if="JwtStore.jwt !== null && !allAddressChecked">il manque une
                 adresse</span>
