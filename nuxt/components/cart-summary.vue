@@ -1,19 +1,10 @@
 <script setup>
-//import cart store
 import { useCartStore } from '@/stores/cart'
 import { useJwtStore } from '@/stores/jwt'
 
 const CartStore = useCartStore()
 const JwtStore = useJwtStore()
-console.log(CartStore.products)
-const cartTotalTTC = computed(() => {
-    let total = 0
-    for (const [id, product] of Object.entries(CartStore.products)) {
-        // console.log(id, product)
-        total += Math.ceil(product.priceHT * (1 + product.TVAPercent / 100) * product.quantity)
-    }
-    return total
-})
+
 const cartTotalHT = computed(() => {
     let total = 0
     for (const [id, product] of Object.entries(CartStore.products)) {
@@ -22,6 +13,26 @@ const cartTotalHT = computed(() => {
     }
     return total
 })
+
+const cartLivraison = computed(() => {
+    return Math.ceil(300 + cartTotalHT.value / 150)
+})
+
+const cartTotalTTC = computed(() => {
+    let total = 0
+    for (const [id, product] of Object.entries(CartStore.products)) {
+        // console.log(id, product)
+        total += Math.ceil(product.priceHT * (1 + product.TVAPercent / 100) * product.quantity)
+    }
+    total += cartLivraison.value
+    return total
+})
+
+const allAddressChecked = computed(() => {
+    return CartStore.address.id !== null && CartStore.addressBill.id !== null
+})
+
+
 </script>
 
 <template>
@@ -30,16 +41,39 @@ const cartTotalHT = computed(() => {
             <h1>Panier</h1>
             <div class="color"></div>
             <p>Sous-total HT : {{ cartTotalHT / 100 }} €</p>
+            <p>Livraison TTC : {{ cartLivraison / 100 }} €</p>
             <p>Sous-total TTC : {{ cartTotalTTC / 100}} €</p>
-            <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
-            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuillez vous
+            <NuxtLink to="/cart/pay" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
+                Payer</NuxtLink>
+            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuiller vous
                 connecter</NuxtLink>
         </div>
-        <div class="cart">
-
-
+        <div class="resume">
+            <h1>Adresse de livraison</h1>
+            <div class="lineAddress">
+                <label :for=CartStore.address.id>
+                    <p>{{ CartStore.address.addressLine1 }}, {{ CartStore.address.zipCode }} {{
+                        CartStore.address.city
+                    }} {{ CartStore.address.state }}</p>
+                    <p>{{ CartStore.address.firstName }} {{ CartStore.address.lastName }} {{
+                        CartStore.address.phone.replace(/(.{2})/g, "$1 ")
+                    }}</p>
+                </label>
+            </div>
+            <h1>Adresse de facturation</h1>
+            <div class="lineAddress">
+                <label :for=CartStore.addressBill.id>
+                    <p>{{ CartStore.addressBill.addressLine1 }}, {{ CartStore.addressBill.zipCode }} {{
+                        CartStore.addressBill.city
+                    }} {{ CartStore.addressBill.state }}</p>
+                    <p>{{ CartStore.addressBill.firstName }} {{ CartStore.addressBill.lastName }} {{
+                        CartStore.addressBill.phone.replace(/(.{2})/g, "$1 ")
+                    }}</p>
+                </label>
+            </div>
+            <NuxtLink to="/cart/pay" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
+                Payer</NuxtLink>
             <article v-for="product in CartStore.products" :key="product.id" class="cartProduct">
-
                 <img :src="product.ProductIllustration[0] || 'https://img.freepik.com/vecteurs-libre/oops-erreur-404-illustration-concept-robot-casse_114360-5529.jpg'"
                     alt="">
                 <div class="cartProductData">
@@ -47,7 +81,7 @@ const cartTotalHT = computed(() => {
                         <h1>{{ product.title }}</h1>
                     </NuxtLink>
                     <div class="prixData">
-                        <span class="prix">{{
+                        <span class="prix">Prix : {{
                             Math.ceil(product.priceHT * (1 + product.TVAPercent / 100) * product.quantity)
                                 / 100
                         }} €
@@ -55,19 +89,16 @@ const cartTotalHT = computed(() => {
                         <span class="ttc">(TTC)</span>
                     </div>
                     <div>
-                        <span @click=CartStore.removeProduct(product.id) class="button">-</span>
-                        <span class="quantities">{{ product.quantity }}</span>
-                        <span @click=CartStore.addProduct(product) class="button">+</span>
+                        <!-- <span @click=CartStore.removeProduct(product.id) class="button">-</span> -->
+                        <span class="quantities">x{{ product.quantity }}</span>
+                        <!-- <span @click=CartStore.addProduct(product) class="button">+</span> -->
                     </div>
                 </div>
             </article>
+            <p class="total">Total TTC : {{ cartTotalTTC / 100 }} €</p>
+            <NuxtLink to="/cart/pay" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked"> Payer
+            </NuxtLink>
 
-            <p class="total">Sous-total TTC : {{ cartTotalTTC / 100 }} €</p>
-            <p v-if="JwtStore.jwt === null" class="warning">
-            </p>
-            <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
-            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuillez vous
-                connecter pour continuer</NuxtLink>
         </div>
     </div>
 </template>
@@ -81,6 +112,7 @@ const cartTotalHT = computed(() => {
 
     gap: 1rem;
     margin-top: 42px;
+    margin-bottom: 64px;
 }
 
 .summary {
@@ -134,8 +166,8 @@ const cartTotalHT = computed(() => {
     width: 100%;
 }
 
-/** */
-.cart {
+/* ***** */
+.resume {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -144,6 +176,24 @@ const cartTotalHT = computed(() => {
     margin-top: 42px;
     grid-area: cart;
 }
+
+.lineAddress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* align-self: center; */
+    width: min(calc(100vw - 2%), 400px);
+    padding-left: 24px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.lineAddress label {
+    width: 100%;
+}
+
+/* ***** */
 
 .cartProduct {
     display: flex;
@@ -168,21 +218,20 @@ img {
     padding: 0.5rem 0;
 }
 
-h1 {
+.cartProduct h1 {
     width: 100%;
     height: 100%;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 20px;
     text-align: justify;
 
     display: flex;
     margin: 0;
 
-    /* color: var(--main-color); */
     color: #000000;
 }
 
@@ -206,27 +255,6 @@ h1 {
     line-height: 13px;
 
     color: #999999;
-}
-
-.button {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
-
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 26px;
-    height: 32px;
-
-    background-color: var(--main-color);
-    color: #ffffff;
-
-    user-select: none;
 }
 
 .quantities {
@@ -253,18 +281,45 @@ h1 {
     text-align: right;
 }
 
-.checkout {
-    width: min(calc(100vw - 2%), 400px);
+/* ***** */
 
+.resume .checkout {
+    width: min(calc(100vw - 6%), 384px);
+}
+
+
+h2,
+h1 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: start;
+    width: min(calc(100vw - 6%), 384px);
+    margin: 0.5rem;
 }
 
-.error {
-    background-color: hsl(0, 100%, 61%);
+.button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 26px;
+    min-height: 32px;
+
+    background-color: var(--main-color);
+    color: #ffffff;
+
+    user-select: none;
+    border: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -275,6 +330,11 @@ h1 {
     }
 
     .summary {
+        width: min(calc(100vw - 6%), 384px);
+        margin: auto;
+    }
+
+    .lineAddress {
         width: min(calc(100vw - 6%), 384px);
         margin: auto;
     }

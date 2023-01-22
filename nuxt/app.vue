@@ -87,7 +87,8 @@ input[type=radio]:hover {
 }
 
 /* input text */
-input[type=text] {
+input[type=text],
+input[type=password] {
   appearance: none;
   height: 2rem;
   /* only border bottom */
@@ -107,15 +108,18 @@ input[type=text] {
   line-height: 18px;
 }
 
-input[type=text]::placeholder {
+input[type=text]::placeholder,
+input[type=password]::placeholder {
   color: hsl(0, 0%, 60%);
 }
 
-input[type=text]:focus {
+input[type=text]:focus,
+input[type=password]:focus {
   border-bottom: 2px solid var(--main-color);
 }
 
-input[type=text]:hover {
+input[type=text]:hover,
+input[type=password]:hover {
   border-bottom: 2px solid var(--main-color);
 }
 
