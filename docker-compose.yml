@@ -1,0 +1,81 @@
+#postgresql
+
+services:
+  nuxt:
+    #DEV
+    build: ./nuxt
+    container_name: nuxt
+    restart: always
+    ports:
+      - "3000:3000"
+      - "24679:24679"
+    volumes:
+      - ./nuxt/:/app
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - API_URL=https://api.casadiny.ovh
+      - CHOKIDAR_USEPOLLING=true
+    # depends_on:
+    #   - express
+
+  express:
+    #DEV
+    build: ./express
+    container_name: express
+    # npm prisma generate
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./express/:/app
+      - '/app/node_modules'
+
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - DATABASE_URL=postgresql://casadiny:casadiny@postgresql:5432/casadiny?schema=casadiny
+
+    # depends_on:
+    #   - postgresql
+    links:
+      - postgresql
+
+  postgresql:
+    image: postgres:15-alpine
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: casadiny
+      POSTGRES_PASSWORD: casadiny
+      POSTGRES_DB: casadiny
+    volumes:
+      - ./_data/postgresql:/var/lib/postgresql/data # persist data
+    ports:
+      - "5432:5432"
+
+  nginx:
+    image: nginx:1.23.3-alpine
+    container_name: nginx
+    restart: always
+    volumes:
+      #for all vhost
+      - ./_data/nginx/conf:/etc/nginx/conf.d # persist nginx config
+      - ./_data/certbot/www:/var/www/certbot/ # certbot webroot
+      - ./_data/certbot/conf/:/etc/nginx/ssl/ # ssl certificates
+      - ./_data/nginx/log:/var/log/nginx # persist logs
+      - ./_data/nginx/html:/var/www/html # persist static files
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - express
+      - nuxt
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    volumes:
+      - ./_data/certbot/www:/var/www/certbot/ # certbot webroot
+      - ./_data/certbot/conf/:/etc/letsencrypt/ # ssl certificates
