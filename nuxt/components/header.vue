@@ -32,7 +32,7 @@ if (jwtStore.jwt !== null) {
             <label for="nav-trigger" id="shadow">
             </label>
             <ul id="menu">
-                <NuxtLink to="/">Acceuil</NuxtLink>
+                <NuxtLink to="/">Accueil</NuxtLink>
                 <!-- <NuxtLink to="/about">A propos</NuxtLink> -->
                 <br>
                 <NuxtLink v-if="jwtStore.jwt === null" to="/auth/sign-in">Connexion</NuxtLink>

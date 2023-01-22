@@ -29,18 +29,23 @@ const cartTotalHT = computed(() => {
         <div class="summary">
             <h1>Panier</h1>
             <div class="color"></div>
-            <p>Sous-total ht : {{ cartTotalHT / 100 }} €</p>
-            <p>Sous-total ttc : {{ cartTotalTTC / 100}} €</p>
+            <p>Sous-total HT : {{ cartTotalHT / 100 }} €</p>
+            <p>Sous-total TTC : {{ cartTotalTTC / 100}} €</p>
             <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
-            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuiller vous
+            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuillez vous
                 connecter</NuxtLink>
         </div>
         <div class="cart">
-            <article v-for="product in CartStore.products" :key="product.id" class="cartProduct">
-                <img :src="product.ProductIllustration[0]" alt="">
-                <div class="cartProductData">
 
-                    <h1>{{ product.title }}</h1>
+
+            <article v-for="product in CartStore.products" :key="product.id" class="cartProduct">
+
+                <img :src="product.ProductIllustration[0] || 'https://img.freepik.com/vecteurs-libre/oops-erreur-404-illustration-concept-robot-casse_114360-5529.jpg'"
+                    alt="">
+                <div class="cartProductData">
+                    <NuxtLink :to="'/product/' + product.id">
+                        <h1>{{ product.title }}</h1>
+                    </NuxtLink>
                     <div class="prixData">
                         <span class="prix">{{
                             Math.ceil(product.priceHT * (1 + product.TVAPercent / 100) * product.quantity)
@@ -56,11 +61,12 @@ const cartTotalHT = computed(() => {
                     </div>
                 </div>
             </article>
-            <p class="total">Sous-total ttc : {{ cartTotalTTC / 100 }} €</p>
+
+            <p class="total">Sous-total TTC : {{ cartTotalTTC / 100 }} €</p>
             <p v-if="JwtStore.jwt === null" class="warning">
             </p>
             <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
-            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuiller vous
+            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuillez vous
                 connecter pour continuer</NuxtLink>
         </div>
     </div>
@@ -175,6 +181,9 @@ h1 {
 
     display: flex;
     margin: 0;
+
+    /* color: var(--main-color); */
+    color: #000000;
 }
 
 .prixData {

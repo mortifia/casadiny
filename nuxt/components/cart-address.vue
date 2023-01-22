@@ -121,8 +121,8 @@ updateAddress()
         <div class="summary">
             <h1>Panier</h1>
             <div class="color"></div>
-            <p>Sous-total ht : {{ cartTotalHT / 100 }} €</p>
-            <p>Sous-total ttc : {{ cartTotalTTC / 100}} €</p>
+            <p>Sous-total HT : {{ cartTotalHT / 100 }} €</p>
+            <p>Sous-total TTC : {{ cartTotalTTC / 100}} €</p>
             <NuxtLink to="/cart/summary" class="button checkout" v-if="JwtStore.jwt !== null && allAddressChecked">
                 Commander</NuxtLink>
             <span class="button checkout error" v-if="JwtStore.jwt !== null && !allAddressChecked">il manque une
