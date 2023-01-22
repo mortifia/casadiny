@@ -18,6 +18,7 @@ model User {
   //admin
   admin       Boolean       @default(false)
   ProductRate ProductRate[]
+  Address     Address[]
 }
 
 model Product {
@@ -53,4 +54,22 @@ model ProductRate {
   userId Int
 
   @@unique([productId, userId])
+}
+
+model Address {
+  id           Int     @id @unique @default(autoincrement())
+  firstName    String
+  lastName     String
+  addressLine1 String
+  addressLine2 String?
+  zipCode      String
+  city         String
+  state        String
+  phone        String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
 }

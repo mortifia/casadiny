@@ -11,13 +11,62 @@ var router = express.Router()
 
 // sign-up
 router.get('/', authToken, async (req, res) => {
-  console.log(req.jwt)
-  console.log(req.user)
-
   //send user wihout password
   const user = { ...req.user, password: undefined }
 
   res.json(user)
+})
+
+//add address
+router.post('/address', authToken, async (req, res) => {
+  try {
+    const address = await req.prisma.address.create({
+      data: {
+        ...req.body,
+        user: {
+          connect: {
+            id: req.user.id,
+          },
+        },
+      },
+    })
+
+    res.json(address)
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: error.message.substring(1, error.message.length - 1) })
+  }
+})
+
+//address
+router.get('/address', authToken, async (req, res) => {
+  try {
+    const address = await req.prisma.address.findMany({
+      where: {
+        userId: req.user.id,
+      },
+    })
+
+    res.json(address)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+})
+
+//address with id
+router.get('/address/:id', authToken, async (req, res) => {
+  try {
+    const address = await req.prisma.address.findUnique({
+      where: {
+        id: Number(req.params.id),
+      },
+    })
+
+    res.json(address)
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
 })
 
 export default router

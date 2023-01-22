@@ -76,7 +76,7 @@ router.post('/signin', async (req, res) => {
 
 export async function authToken(req, res, next) {
   try {
-    console.log(`test : ${req.headers.authorization.split(' ')[1].toString()}`)
+    // console.log(`test : ${req.headers.authorization.split(' ')[1].toString()}`)
     const authHeader = req.headers.authorization
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401)

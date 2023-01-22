@@ -1,8 +1,10 @@
 <script setup>
 //import cart store
 import { useCartStore } from '@/stores/cart'
+import { useJwtStore } from '@/stores/jwt'
 
 const CartStore = useCartStore()
+const JwtStore = useJwtStore()
 console.log(CartStore.products)
 const cartTotalTTC = computed(() => {
     let total = 0
@@ -29,7 +31,9 @@ const cartTotalHT = computed(() => {
             <div class="color"></div>
             <p>Sous-total ht : {{ cartTotalHT / 100 }} €</p>
             <p>Sous-total ttc : {{ cartTotalTTC / 100}} €</p>
-            <NuxtLink to="/cart/addresse" class="button checkout">Commander</NuxtLink>
+            <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
+            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuiller vous
+                connecter</NuxtLink>
         </div>
         <div class="cart">
             <article v-for="product in CartStore.products" :key="product.id" class="cartProduct">
@@ -53,7 +57,11 @@ const cartTotalHT = computed(() => {
                 </div>
             </article>
             <p class="total">Sous-total ttc : {{ cartTotalTTC / 100 }} €</p>
-            <NuxtLink to="/cart/addresse" class="button checkout">Commander</NuxtLink>
+            <p v-if="JwtStore.jwt === null" class="warning">
+            </p>
+            <NuxtLink to="/cart/address" class="button checkout" v-if="JwtStore.jwt !== null">Commander</NuxtLink>
+            <NuxtLink to="/auth/sign-in" class="button checkout error" v-if="JwtStore.jwt === null">Veuiller vous
+                connecter pour continuer</NuxtLink>
         </div>
     </div>
 </template>
@@ -74,7 +82,8 @@ const cartTotalHT = computed(() => {
     height: fit-content;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: start;
+    justify-content: flex-start;
+
     /* gap: 0.25rem; */
     margin-right: auto;
     margin-top: 42px;
@@ -243,6 +252,10 @@ h1 {
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
+}
+
+.error {
+    background-color: hsl(0, 100%, 61%);
 }
 
 @media screen and (max-width: 768px) {

@@ -19,15 +19,16 @@ export default defineNuxtConfig({
     },
   },
   // hmr wss
-  // vite: {
-  //   server: {
-  //     hmr: {
-  //       path: '/_hmr',
-  //       // protocol: 'wss',
-  //       port: 24679,
-  //     },
-  //   },
-  // },
+  vite: {
+    server: {
+      hmr: {
+        port: 24679,
+        clientPort: 443,
+        path: '/_hmr',
+        protocol: 'wss',
+      },
+    },
+  },
   runtimeConfig: {
     public: {
       API_URL: process.env.API_URL || 'http://localhost:3001',
