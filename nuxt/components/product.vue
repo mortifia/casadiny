@@ -34,30 +34,30 @@ function addToCart(e) {
 </script>
 
 <template>
-    <NuxtLink :to="'/product/' + props.id">
-        <article>
-            <img :src="props.ProductIllustration[0] || 'https://img.freepik.com/vecteurs-libre/oops-erreur-404-illustration-concept-robot-casse_114360-5529.jpg'"
-                alt="">
+    <article>
+        <img :src="props.ProductIllustration[0] || 'https://img.freepik.com/vecteurs-libre/oops-erreur-404-illustration-concept-robot-casse_114360-5529.jpg'"
+            alt="">
+        <NuxtLink :to="'/product/' + props.id" class="null">
             <h1 class="primary">{{ title }}</h1>
-            <div class="line">
-                <span class="price">{{ priceTTC/ 100 }} €</span>
-                <span class="note">
-                    <span>{{ props.averageRate || "" }}</span>
-                    <span class="material-symbols-outlined fill primary">
-                        {{ '&#xe838;'.repeat(startRating.fullStars) }}
-                    </span>
-                    <span class="material-symbols-outlined primary">
-                        {{ '&#xe839;'.repeat(startRating.halfStars) + '&#xe838;'.repeat(startRating.emptyStars) }}
-                    </span>
+        </NuxtLink>
+        <div class="line">
+            <span class="price">{{ priceTTC/ 100 }} €</span>
+            <span class="note">
+                <span>{{ props.averageRate || "" }}</span>
+                <span class="material-symbols-outlined fill primary">
+                    {{ '&#xe838;'.repeat(startRating.fullStars) }}
                 </span>
-            </div>
-            <div class="addCart primary-reverse" @click="addToCart">
-                <span class="material-symbols-outlined">
-                    add_shopping_cart
+                <span class="material-symbols-outlined primary">
+                    {{ '&#xe839;'.repeat(startRating.halfStars) + '&#xe838;'.repeat(startRating.emptyStars) }}
                 </span>
-            </div>
-        </article>
-    </NuxtLink>
+            </span>
+        </div>
+        <div class="addCart primary-reverse" @click="addToCart">
+            <span class="material-symbols-outlined">
+                add_shopping_cart
+            </span>
+        </div>
+    </article>
 </template>
 
 <style scoped>
@@ -112,6 +112,12 @@ h1 {
 
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.null {
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .line {
