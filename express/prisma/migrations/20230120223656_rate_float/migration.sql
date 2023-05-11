@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "ProductRate" ALTER COLUMN "rate" SET DATA TYPE DOUBLE PRECISION;
