@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   postgresql:
-  #postgresql 15
+    #postgresql 15
     image: postgres:15
     container_name: postgresql
     restart: always
@@ -16,7 +16,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   redis:
-  #redis
+    #redis
     image: redis:7
     container_name: redis
     restart: always
@@ -24,23 +24,48 @@ services:
       - 6379:6379
     volumes:
       - redis_data:/data
-  
+
   minio:
     #minio
-    image: minio/minio
+    image: minio/minio:latest
     container_name: minio
     restart: always
     ports:
-      - "9010:9000"
-      - "9011:9001"
+      - "9010:9010"
+      - "9011:9011"
     volumes:
       - minio_data:/data
     environment:
       MINIO_ROOT_USER: test
       MINIO_ROOT_PASSWORD: testtest
-    command: server --console-address ":9001" /data
+    command: server --console-address ":9011" --address ":9010" /data
 
+  nginx:
+    #nginx
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    volumes:
+      #for all vhost
+      - ./_data/nginx/conf:/etc/nginx/conf.d # persist nginx config
+      - ./_data/certbot/www:/var/www/certbot/ # certbot webroot
+      - ./_data/certbot/conf/:/etc/nginx/ssl/ # ssl certificates
+      - ./_data/nginx/log:/var/log/nginx # persist logs
+      - ./_data/nginx/html:/var/www/html # persist static files
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3010:3010"
+    depends_on:
+      - minio
+    links:
+      - minio
 
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./_data/certbot/www:/var/www/certbot/:rw
+      - ./_data/certbot/conf/:/etc/letsencrypt/:rw
 
 volumes:
   postgres_data:

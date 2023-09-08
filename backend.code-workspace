@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "medusa/backend"
+		},
+		{
+			"path": "nuxt"
+		},
+		{
+			"path": "_data"
+		},
+		{
+			"path": "_doc"
+		},
+		{
+			"path": "TEST"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

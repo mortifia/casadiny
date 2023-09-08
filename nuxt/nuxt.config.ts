@@ -2,17 +2,17 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   typescript: {
-    strict: true,
-    typeCheck: true,
+    strict: false,
+    typeCheck: true
   },
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    'nuxt-medusa',
     '@nuxtjs/color-mode',
   ],
-  medusa: {
-    server: true,
-
+  runtimeConfig: {
+    public : {
+      medusaUrl: 'http://localhost:1000'
+    }
   },
 })
